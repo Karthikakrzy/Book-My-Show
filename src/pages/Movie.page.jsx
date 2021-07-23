@@ -1,10 +1,55 @@
 import { FaCcVisa, FaCcApplePay} from "react-icons/fa";
 
+//component
 import MovieHero from "../components/MovieHero/MovieHero.component";
+import Cast from "../components/Cast/Cast.component";
 
+import  PosterSlider  from "../components/PosterSlider/PosterSlider.component";
+
+
+//config
+import TempPosters from "../config/TempPosters.config"
 
 
 const Movie = () => {
+
+
+    const settings ={
+        infinite:false,
+        speed:500,
+        slidesToShow:4,
+        slidesToScroll:4,
+        InitialSlide:0,
+        responsive: [
+            {
+            breakpoints:1024,
+            settings:{
+                slidesToShow:3,
+                slidesToScroll:3,
+                infinite:true,
+            }
+        },
+        {
+            breakpoints:600,
+            settings:{
+                slidesToShow:2,
+                slidesToScroll:2,
+                InitialSlide:2,
+            }
+        },
+        
+        {
+            breakpoints:480,
+            settings:{
+                slidesToShow:3,
+                slidesToScroll:1,
+            }
+        },
+        
+        ]
+        
+        };
+    
 
     return (
         <>
@@ -51,6 +96,41 @@ const Movie = () => {
            </div>
        </div>
        </div>
+       
+       
+       
+       <div className="my-8">
+       <div className="my-8">
+           <hr/>
+       </div>
+       <h2 className="text-gray-800 font-bold text-2xl mb-4">Cast & Crew</h2>
+       <div className="flex flex-wrap gap-4">
+           <Cast image="https://in.bmscdn.com/iedb/artist/images/website/poster/large/ben-affleck-292-12-09-2017-05-12-16.jpg"       
+             castName="Ben Affleck" role="Batman"/>
+           <Cast image="https://in.bmscdn.com/iedb/artist/images/website/poster/large/henry-cavill-23964-04-05-2020-04-25-14.jpg" 
+           castName="Henry cavil" role="Superman"/>
+           <Cast image="https://in.bmscdn.com/iedb/artist/images/website/poster/large/gal-gadot-11088-17-10-2017-11-45-36.jpg" 
+           castName="Gal Gadot" role="Wonder Woman"/>
+           <Cast image="https://in.bmscdn.com/iedb/artist/images/website/poster/large/jason-momoa-25617-24-03-2017-17-39-52.jpg" 
+           castName="Jason Momoa" role="Aquaman"/>
+
+       </div>
+       </div>
+
+       <div className="my-8">
+           <hr/>
+       </div>
+            <div className="my-8">
+          <PosterSlider  config={settings} images={TempPosters} title="You might also like" isDark={false}/>
+           </div>
+
+           <div className="my-8">
+           <hr/>
+       </div>
+       
+           <div className="my-8">
+          <PosterSlider  config={settings} images={TempPosters} title="BMS XCLUSIV" isDark={false}/>
+           </div>
        </div>
         </>
     )
